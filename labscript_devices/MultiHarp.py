@@ -8,9 +8,9 @@ Implements the Histogram mode of operation during Buffered Mode
 Can set up device parameters during Manual Mode
 """
 from __future__ import print_function, division, unicode_literals, absolute_import
-from labscript_utils import PY2
-if PY2:
-    str = unicode
+#from labscript_utils import PY2
+#if PY2:
+#    str = unicode
 
 # LABSCRIPT_DEVICES IMPORTS
 from labscript_devices import labscript_device, BLACS_tab, BLACS_worker, runviewer_parser
@@ -18,7 +18,7 @@ from labscript_devices import labscript_device, BLACS_tab, BLACS_worker, runview
 # LABSCRIPT IMPORTS
 from labscript import  Device, IntermediateDevice, LabscriptError, Output, config, set_passed_properties, TriggerableDevice
 import numpy as np
-import visa
+#import visa
 import os
 
 
@@ -266,7 +266,7 @@ class MultiHarpWorker(Worker):
     def init(self):
     #def init(self, name, visa_resource = 'COM5', baud=115200, timeout=1, termination='\n'):
         global h5py; import labscript_utils.h5_lock, h5py
-        global Queue; import Queue
+        #global Queue; import Queue
         global time; import time
         global threading; import threading
         print('Made it to the Blacs_worker!!!')

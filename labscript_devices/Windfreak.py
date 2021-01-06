@@ -6,9 +6,9 @@
 Python software for communicating with windfreak USB2
 """
 from __future__ import print_function, division, unicode_literals, absolute_import
-from labscript_utils import PY2
-if PY2:
-    str = unicode
+#from labscript_utils import PY2
+#if PY2:
+#    str = unicode
 
 # LABSCRIPT_DEVICES IMPORTS
 from labscript_devices import labscript_device, BLACS_tab, BLACS_worker, runviewer_parser
@@ -17,7 +17,8 @@ from labscript_devices import labscript_device, BLACS_tab, BLACS_worker, runview
 from labscript import  StaticAnalogQuantity, Device, IntermediateDevice, LabscriptError, Output, config, set_passed_properties
 import numpy as np
 #import visa
-import visa
+import matplotlib
+import pyvisa as visa
 import os
 
 @labscript_device
