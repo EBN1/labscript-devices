@@ -6,9 +6,6 @@
 Python software for communicating with transfer cavity lock labview VI
 """
 from __future__ import print_function, division, unicode_literals, absolute_import
-from labscript_utils import PY2
-if PY2:
-    str = unicode
 
 # LABSCRIPT_DEVICES IMPORTS
 from labscript_devices import labscript_device, BLACS_tab, BLACS_worker, runviewer_parser
@@ -17,7 +14,7 @@ from labscript_devices import labscript_device, BLACS_tab, BLACS_worker, runview
 from labscript import  StaticAnalogQuantity, Device, IntermediateDevice, LabscriptError, Output, config, set_passed_properties
 import numpy as np
 #import visa
-import visa
+import pyvisa as visa
 import os
 import socket
 import struct
@@ -147,7 +144,7 @@ class LaserTCPIPLockWorker(Worker):
     def init(self):
         global socket; import socket
         global h5py; import labscript_utils.h5_lock, h5py
-        global Queue; import Queue
+        global queue; import queue
         global time; import time
         global threading; import threading
         self.num_lasers=16

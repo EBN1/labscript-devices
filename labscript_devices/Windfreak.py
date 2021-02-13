@@ -108,7 +108,6 @@ class WindfreakWorker(Worker):
     #def init(self, name, visa_resource = 'COM5', baud=115200, timeout=1, termination='\n'):
         global visa; import visa
         global h5py; import labscript_utils.h5_lock, h5py
-        global Queue; import Queue
         global time; import time
         global threading; import threading
 
