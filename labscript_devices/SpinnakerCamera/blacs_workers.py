@@ -232,7 +232,7 @@ class Spinnaker_Camera(object):
         num_frames=self.get_attribute('StreamTotalBufferCount', stream_map=True)
         failed_frames=self.get_attribute('StreamFailedBufferCount', stream_map=True)
         underrun_frames=self.get_attribute('StreamBufferUnderrunCount', stream_map=True)
-        print('Stream info: %d frames acquired, %d failed, %d underrun' %
+        print('Stream info: %r frames acquired, %r failed, %r underrun' %
               (num_frames, failed_frames, underrun_frames))
 
     def abort_acquisition(self):

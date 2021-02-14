@@ -91,12 +91,12 @@ class MultiHarp(TriggerableDevice):
         self.trigger_device.trigger(t,t_acquire)
         start, end = t, t+t_acquire
         for exposure in self.acquisitions:
-            _, other_t, _, other_duration = exposure
+            _, other_t, other_duration = exposure
             other_start = other_t
             other_end = other_t + other_duration
             if abs(other_start - end) < self.minimum_recovery_time or abs(other_end - start) < self.minimum_recovery_time:
                 raise LabscriptError('%s %s has two acquisitions closer together than the minimum recovery time: ' %(self.description, self.name) + \
-                                     'one at t = %fs for %fs, and another at t = %fs for %fs. '%(t,duration,start,duration) + \
+                                     'one at t = %fs for %fs, and another at t = %fs for %fs. '%(t,t_acquire,start,t_acquire) + \
                                      'The minimum recovery time is %fs.'%self.minimum_recovery_time)
         self.acquisitions.append((name, t, t_acquire))
         return t_acquire
