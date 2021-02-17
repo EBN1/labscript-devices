@@ -75,7 +75,7 @@ class MultiHarp(TriggerableDevice):
         print('Made it to the labscript_device __init__ !!!')
         self.BLACS_connection = serial_number #Use the first device found
         print('Blacs will use S/N %s' % self.BLACS_connection)
-        self.minimum_recovery_time=0.1
+        self.minimum_recovery_time=0.01
         self.t_acquire=t_acquire
 
         self.edges = []
@@ -321,7 +321,7 @@ class MultiHarpWorker(Worker):
                 "GetHardwareInfo")
         print("Initialized Model %s Part no %s Version %s" % (hwModel.value.decode("utf-8"),
               hwPartno.value.decode("utf-8"), hwVersion.value.decode("utf-8")))
-        tryfunc(mhlib.MH_SetMeasControl(ct.c_int(dev[0]),ct.c_int(self.meas_control),ct.c_int(1),ct.c_int(1)),"SetMeasControl")
+        tryfunc(mhlib.MH_SetMeasControl(ct.c_int(dev[0]),ct.c_int(self.meas_control),ct.c_int(1),ct.c_int(0)),"SetMeasControl")
         print('Measurement Control Settings are set with mode %d' % self.meas_control)
         print('t_acquire = %f s' % self.t_acquire)
     def closeDevices():
@@ -390,7 +390,7 @@ class MultiHarpWorker(Worker):
 #4          1280, etc.
 
     def mhStartMeas(self, device, t_acquire):
-        print('starting MultiHarp measurement')
+        print('starting MultiHarp measurement with t_acquire = %d' %t_acquire)
         return mhlib.MH_StartMeas(ct.c_int(device),ct.c_int(int(t_acquire)))
     def mhStopMeas(self, device):
         print('stopping MultiHarp measurement')
